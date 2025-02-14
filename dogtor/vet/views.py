@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from django.views.generic import View, TemplateView, ListView
+from django.views.generic import View, TemplateView, ListView, DetailView
 
 # models
 
-from .models import PetOwner
+from .models import PetOwner, Pet
 
 # Create your views here.
+
 
 def list_pet_owners(request):
     print("REQUEST ---->", request)
@@ -20,10 +21,11 @@ def list_pet_owners(request):
     print(context)
 
     # Conectamos el contexto
-    template= loader.get_template('vet/owners/list.html')
+    template = loader.get_template("vet/owners/list.html")
 
     # Retornamos respuesta HTTP con el template pasando el contexto
     return HttpResponse(template.render(context, request))
+
 
 # Vistas de class
 
@@ -37,14 +39,37 @@ def list_pet_owners(request):
 #         context["owners"] = PetOwner.objects.all()
 #         return context
 
+
+class Petlist(ListView):
+    model=Pet
+    template_name = "vet/pets/list.html"
+    context_object_name = "pets"
+
+class PetDetail(DetailView):
+    model=Pet
+    template_name = "vet/pets/detail.html"
+    context_object_name = "pet"
+
+
 class OwnerList(ListView):
+    """Render all Pet Owners."""
+
     # 1.- Colocamos el Modelo
     # 2.- Template que vamos a renderizar el modelo
     # 3.- Contexto que va a usar el template
 
-    model = PetOwner # 1 
-    template_name = "vet/owners/list.html" # 2
-    context_object_name = "owners" # 3
+    model = PetOwner  # 1
+    template_name = "vet/owners/list.html"  # 2
+    context_object_name = "owners"  # 3
+
+
+class OwnerDetail(DetailView):
+    """Renders a specific Owner with their pk."""
+
+    model = PetOwner
+    template_name = "vet/owners/detail.html"
+    context_object_name = "owner"
+
 
 class Test(View):
     # Como funcion el metodo(GET, PATCH, POST, DELETE, PUT)
