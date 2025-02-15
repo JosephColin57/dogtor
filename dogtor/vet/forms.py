@@ -1,7 +1,7 @@
 from django import forms
 
 # Importamos los modelos
-from .models import PetOwner
+from .models import PetOwner, Pet
 
 # Los formularios se tienen que vincular con los modelos.
 
@@ -14,3 +14,8 @@ class OwnerForm(forms.ModelForm):
     class Meta:
         model = PetOwner  # 1
         fields = ("first_name", "last_name", "address", "email", "phone")  # 2
+
+class PetForm(forms.ModelForm):
+    class Meta:
+        model = Pet
+        fields = ("name", "type", "owner")

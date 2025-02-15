@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView
-from .forms import OwnerForm
+from .forms import OwnerForm, PetForm
 from django.urls import reverse_lazy
 
 # models
@@ -80,7 +80,7 @@ class Test(View):
     def get(self, request):
         return HttpResponse("Hello world from a class generic view")
 
-class OwnerCreate(CreateView):
+class OwnersCreate(CreateView):
     """Create a new Owner."""
 
     # 1.- Model
@@ -92,3 +92,24 @@ class OwnerCreate(CreateView):
     template_name = "vet/owners/create.html" # 2
     form_class = OwnerForm # 3
     success_url = reverse_lazy("vet:owners_list") # 4
+
+class OwnersUpdate(UpdateView):
+    """Update informacion of owner"""
+    model = PetOwner
+    template_name= "vet/owners/update.html"
+    form_class = OwnerForm
+    success_url = reverse_lazy("vet:owners_list")
+
+class PetCreate(CreateView):
+    """Create a new Pet."""
+    model = Pet
+    template_name = "vet/pets/create.html"
+    form_class = PetForm
+    success_url = reverse_lazy("vet:pets_list")
+
+class PetsUpdate(UpdateView):
+    """Update informacion of Pet"""
+    model = Pet
+    template_name= "vet/pets/update.html"
+    form_class = PetForm
+    success_url = reverse_lazy("vet:pets_list")
