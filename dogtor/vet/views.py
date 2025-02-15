@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView
+from .forms import OwnerForm
+from django.urls import reverse_lazy
 
 # models
 
@@ -41,11 +43,13 @@ def list_pet_owners(request):
 
 
 class Petlist(ListView):
+    """Render all Pets."""
     model=Pet
     template_name = "vet/pets/list.html"
     context_object_name = "pets"
 
 class PetDetail(DetailView):
+    """Render a details of a specific pet with pk"""
     model=Pet
     template_name = "vet/pets/detail.html"
     context_object_name = "pet"
@@ -75,3 +79,16 @@ class Test(View):
     # Como funcion el metodo(GET, PATCH, POST, DELETE, PUT)
     def get(self, request):
         return HttpResponse("Hello world from a class generic view")
+
+class OwnerCreate(CreateView):
+    """Create a new Owner."""
+
+    # 1.- Model
+    # 2.- Template a Renderizar
+    # 3.- Campos que va a tener el formulario
+    # 4.- URLs si la request fue exitosa --> reversed_url
+
+    model = PetOwner # 1
+    template_name = "vet/owners/create.html" # 2
+    form_class = OwnerForm # 3
+    success_url = reverse_lazy("vet:owners_list") # 4
