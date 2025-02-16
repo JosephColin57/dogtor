@@ -20,6 +20,7 @@ from django.urls import path, include
 # Importar Admin Panels
 
 from blog.admin import blog_admin_site
+from vet.admin import vet_admin_site
 
 # si no tienes include -> reversed url se pone como 3er parametro ejemplo -> name="owners_list"
 # si SI tienes include -> reversed url se pone como 2do parametro DENTRO del include() -> include(("vet.urls", "vet"))
@@ -28,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog_admin/', blog_admin_site.urls),
     path('vet/', include(('vet.urls', 'vet'))),
+    path('vet_admin/', vet_admin_site.urls),
     ]
 
 # Customizar nuestro panel de administracion
