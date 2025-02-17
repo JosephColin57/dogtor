@@ -11,7 +11,7 @@ from django.views.generic import (
 )
 from .forms import OwnerForm, PetForm
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 # models
 
@@ -78,7 +78,7 @@ class OwnerList(ListView):
     context_object_name = "owners"  # 3
 
 
-class OwnerDetail(DetailView):
+class OwnerDetail(LoginRequiredMixin, DetailView):
     """Renders a specific Owner with their pk."""
 
     model = PetOwner
