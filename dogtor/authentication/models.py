@@ -4,11 +4,13 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 # Maneger
 from .managers import ModUserManager
 
+
 # Create your models here.
 class ModUser(AbstractUser, PermissionsMixin):
     """Custom modereator User."""
-# sobreescribir propiedades del modelo usuario y atributos de la tabla de user
-# extender propiedades o atributos (nuevos fields)
+
+    # sobreescribir propiedades del modelo usuario y atributos de la tabla de user
+    # extender propiedades o atributos (nuevos fields)
 
     email = models.EmailField(unique=True)
     user_name = models.CharField(max_length=150, unique=True)
@@ -25,7 +27,7 @@ class ModUser(AbstractUser, PermissionsMixin):
     USERNAME_FIELD = "email"
 
     # Campos requeridos para crear al createsuperuser
-    REQUIRED_FIELDS = ["user_name"]
+    REQUIRED_FIELDS = ["user_name", "first_name"]
 
     # Metodo String
     def __str__(self):

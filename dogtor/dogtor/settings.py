@@ -122,6 +122,8 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = "/vet/owners"
 LOGOUT_REDIRECT_URL = "/"
 
+# AUTH USER que vamos a usar
+AUTH_USER_MODEL = "authentication.ModUser"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
