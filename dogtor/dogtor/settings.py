@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "vet",
     "blog",
+    "authentication"
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,7 @@ USE_I18N = True
 USE_TZ = True
 
 # URL's de redireccion para login
-LOGIN_REDIRECT_URL = "vet/owners"
+LOGIN_REDIRECT_URL = "/vet/owners"
 LOGOUT_REDIRECT_URL = "/"
 
 

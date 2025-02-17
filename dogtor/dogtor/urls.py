@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 
@@ -26,12 +27,12 @@ from vet.admin import vet_admin_site
 # si SI tienes include -> reversed url se pone como 2do parametro DENTRO del include() -> include(("vet.urls", "vet"))
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('blog_admin/', blog_admin_site.urls),
-    path('vet_admin/', vet_admin_site.urls),
-    path('vet/', include(('vet.urls', 'vet'))),
-    path('accounts/', include("django.contrib.auth.urls"))
-    ]
+    path("admin/", admin.site.urls),
+    path("blog_admin/", blog_admin_site.urls),
+    path("vet_admin/", vet_admin_site.urls),
+    path("vet/", include(("vet.urls", "vet"))),
+    path("accounts/", include("django.contrib.auth.urls")),
+]
 
 # Customizar nuestro panel de administracion
 admin.site.index_title = "Dogtor"
