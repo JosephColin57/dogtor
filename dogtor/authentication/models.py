@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 # Create your models here.
+
+# maneger
+
 class ModUser(AbstractUser, PermissionsMixin):
     """Custom modereator User."""
 # sobreescribir propiedades del modelo usuario y atributos de la tabla de user
