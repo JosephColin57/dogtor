@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
+# Maneger
+from .managers import ModUserManager
+
 # Create your models here.
-
-# maneger
-
 class ModUser(AbstractUser, PermissionsMixin):
     """Custom modereator User."""
 # sobreescribir propiedades del modelo usuario y atributos de la tabla de user
@@ -17,6 +17,9 @@ class ModUser(AbstractUser, PermissionsMixin):
     about = models.TextField(max_length=500, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
+
+    # Manager del modelo
+    objects = ModUserManager()
 
     # Campo identificador de la tabla
     USERNAME_FIELD = "email"

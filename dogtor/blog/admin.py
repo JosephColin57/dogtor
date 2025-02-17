@@ -24,4 +24,4 @@ blog_admin_site.register(models.Post, PostAdmin)
 # Registrar en el admin general del admin
 admin.site.register(models.Post, PostAdmin)
 
- """
+ """    

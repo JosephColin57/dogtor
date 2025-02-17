@@ -17,7 +17,7 @@ class ModUserManager(BaseUserManager):
         email = self.normalize_email(email)
 
         # Nos hizo el usuario en la variable "user"
-        user = self.model(email=email, user_name=user_name, first_name=first_name, **other_fields)
+        user = self.model(email=email, user_name=user_name, first_name=first_name, **others_fields)
 
         # Seteamos Password
         user.set_password(password)
