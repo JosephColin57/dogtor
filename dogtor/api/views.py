@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, generics
-from .serializers import  OwnersListSerializer, OwnersDetailSerializer
+from .serializers import  OwnersListSerializer, OwnersDetailSerializer, CreateOwnerSerializer, UpdateOwnerSerializer, DeleteOwnerSerializer
 
 #Models
 from vet.models import PetOwner, Pet, PetDate
@@ -40,3 +40,21 @@ class RetrieveOwnerAPIView(generics.RetrieveAPIView):
 
     queryset = PetOwner.objects.all()
     serializer_class = OwnersDetailSerializer
+
+class CreateOwnerAPIView(generics.CreateAPIView):
+    """Create Owner Api View."""
+
+    queryset = PetOwner.objects.all()
+    serializer_class = CreateOwnerSerializer
+
+class UpdateOwnerAPIView(generics.RetrieveUpdateAPIView):
+    """Update Owner Api View."""
+
+    queryset = PetOwner.objects.all()
+    serializer_class = UpdateOwnerSerializer
+
+class DeleteOwnerAPIView(generics.RetrieveDestroyAPIView):
+    """Delete Owner Api View."""
+
+    queryset = PetOwner.objects.all()
+    serializer_class = DeleteOwnerSerializer

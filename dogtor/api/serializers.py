@@ -41,3 +41,24 @@ class OwnersDetailSerializer(serializers.ModelSerializer):
         model = PetOwner
         # fields = "__all__" # Mala Practica
         fields = ["first_name", "last_name", "email", "address", "phone", "created_at"] # Buena Practica
+
+class CreateOwnerSerializer(serializers.ModelSerializer):
+    """Serializer to create a Pet Owner."""
+
+    class Meta:
+        model = PetOwner
+        fields = ["first_name", "last_name", "email", "address", "phone"]
+
+class UpdateOwnerSerializer(serializers.ModelSerializer):
+    """Serializer to update a Pet Owner."""
+
+    class Meta:
+        model = PetOwner
+        fields = ["first_name", "last_name", "email", "address", "phone"]
+
+class DeleteOwnerSerializer(serializers.ModelSerializer):
+    """Serializer to delete a Pet Owner."""
+
+    class Meta:
+        model = PetOwner
+        fields = "__all__"
