@@ -32,7 +32,7 @@ class OwnersListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PetOwner
-        fields = ["first_name", "last_name"]
+        fields = ["id", "first_name", "last_name"]
 
 class OwnersDetailSerializer(serializers.ModelSerializer):
     """Serializer to show details of a Pet Owner."""

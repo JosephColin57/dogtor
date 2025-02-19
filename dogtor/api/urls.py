@@ -14,7 +14,7 @@ urlpatterns = [
   # path("", include(router.urls)),
   path("owners/", ListOwnersAPIView.as_view(), name="owners_list"),
   path("owners/<int:pk>/", RetrieveOwnerAPIView.as_view(), name="owner_detail"),
-  path("owners/<int:pk>/add/", CreateOwnerAPIView.as_view(), name="owner_detail"),
-  path("owners/<int:pk>/update/", UpdateOwnerAPIView.as_view(), name="owner_detail"),
-  path("owners/<int:pk>/delete/", DeleteOwnerAPIView.as_view(), name="owner_detail"),
+  path("owners/add/", CreateOwnerAPIView.as_view(), name="owner_create"),
+  path("owners/<int:pk>/update/", UpdateOwnerAPIView.as_view(), name="owner_update"),
+  path("owners/<int:pk>/delete/", DeleteOwnerAPIView.as_view(), name="owner_delete"),
  ]
